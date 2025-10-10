@@ -163,6 +163,18 @@ The final K-Means model (K = 5) successfully grouped countries into five distinc
 <img width="894" height="505" alt="Screenshot 2025-10-10 111451" src="https://github.com/user-attachments/assets/2258d7b9-917e-4583-968c-4849e33890d7" />
 
 
+The plot above shows the results of **K-Means clustering** visualized using **Principal Component Analysis (PCA)**, which reduces the multidimensional data into two principal components while preserving most of the variance. Each point represents a country, and the colors correspond to the five clusters identified by the model.
+
+- **Least Developed Nations (dark blue):** Countries with high child mortality, low income, and limited healthcare access.  
+- **Developing Nations (blue):** Countries showing progress in income and health but still below global averages.  
+- **Developed Nations (teal):** Economies with strong health outcomes, moderate inflation, and stable growth.  
+- **Ultra-High-Income Nations (light green):** The most advanced economies with high GDP, low fertility, and excellent life expectancy.  
+- **Economically Unstable Nations (green):** Countries experiencing extreme inflation or other severe economic instability (only 1 point, Nigeria).
+
+The clear separation between clusters indicates that the model successfully distinguished countries based on their economic and social development levels. PCA helps visualize these relationships in two dimensions, making it easier to observe the spread and overlap of different development groups.
+
+
+
 
 ## Conclusion
 
