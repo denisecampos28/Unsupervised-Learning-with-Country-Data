@@ -47,10 +47,12 @@ Visualization – Created PCA scatterplots, boxplots, and bar charts to visualiz
 
 Most variables in my dataset are fairly self-explanatory, but a few require deeper interpretation. This is important because when comparing countries, we need to understand what high or low values in certain variables represent and whether they indicate a more or less developed nation.
 
-**child_mort**
+### **child_mort**
+
 The global child mortality rate is 37 per 1000 deaths. Some countries are a lot higher/lower than that. The lower, the more highly developed the country most likly is. 
 
-**exports**
+### **exports**
+
 Exports show how much of the country’s economy comes from selling goods and services abroad. Low exports means country doesn’t trade much internationally and might rely heavily on local production. High exports means he country is very trade-oriented and often developed. 
 
 **health**
