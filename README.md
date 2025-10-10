@@ -23,7 +23,9 @@ Visualization – Created PCA scatterplots, boxplots, and bar charts to visualiz
 ## Data 
 
 **Dataset Name:** Country-data.csv 
+
 **Rows:** 167 countries
+
 **Columns:** 10
 
 **There were no missing or duplicated values in the dataset.**
