@@ -69,8 +69,7 @@ This is the net income per person. Obviously the higher the better. This should 
 
 ### **inflation**
 
-This metric is the measurement of the annual growth rate of the Total GDP
-How much more expensive life gets each year. Infaltion rates have a sweet spot, given by the table below: 
+This metric is the measurement of the annual growth rate of the Total GDP, which measures how much more expensive life gets each year. Inflation rates have a sweet spot, given by the table below: 
 
 | **Value** | **What It Means** | **Interpretation** |
 |------------|-------------------|--------------------|
@@ -114,7 +113,9 @@ These preprocessing steps ensured that the dataset was clean, comparable, and re
 ## Training 
 
 **Model Used:** K-Means clustering (scikit-learn)
+
 **Model Parameters:** KMeans(n_clusters=5, random_state=42)
+
 Dimensionality Reduction: PCA with 2 components for visual clarity.
 
 Choosing the right number of clusters is crucial in unsupervised learning, as it directly affects how well the model separates similar countries. Two methods were used to determine the optimal value of **K**:
@@ -144,8 +145,7 @@ Together, these steps ensured that the clustering results were both statisticall
 
 ## Model Performance 
 
-The final K-Means model (K = 5) successfully grouped countries into five distinct clusters based on their socio-economic and health indicators.  
-The table below represents the mean values of each variable within each cluster.
+The final K-Means model (K = 5) successfully grouped countries into five distinct clusters based on their socio-economic and health indicators. The table below represents the mean values of each variable within each cluster.
 
 | Cluster | General Profile | Summary |
 |----------|-----------------|----------|
