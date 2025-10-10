@@ -5,20 +5,6 @@ This project applies unsupervised machine learning, specifically the K-Means Mod
 The goal is to group countries based on their level of development and identify those most in need of direct humanitarian or economic aid.
 The project discovers hidden patterns in global data without predefined labels.
 
-## Summary of Workdone 
-Exploratory Data Analysis (EDA) – Examined statistical summaries, outliers, and distributions for each variable.
-
-Feature Standardization – Scaled all numeric features so that large-valued features (like GDP) do not dominate distance calculations.
-
-Model Selection – Determined the optimal number of clusters using the Elbow Method and Silhouette Score.
-
-K-Means Clustering – Grouped 167 countries into five clusters representing distinct development levels.
-
-Dimensionality Reduction (PCA) – Reduced data to two principal components for clear 2D visualization.
-
-Interpretation – Analyzed socioeconomic meaning of each cluster to identify the least developed and most economically unstable nations.
-
-Visualization – Created PCA scatterplots, boxplots, and bar charts to visualize development patterns and economic indicators.
 
 ## Data 
 
