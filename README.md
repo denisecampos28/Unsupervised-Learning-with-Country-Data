@@ -151,6 +151,8 @@ The final K-Means model (K = 5) successfully grouped countries into five distinc
 <img width="771" height="233" alt="Screenshot 2025-10-10 103618" src="https://github.com/user-attachments/assets/78c6c6f2-7244-4eb4-9ac3-f9a080d5dd41" />
 
 
+
+
 | Cluster | General Profile | Summary |
 |----------|-----------------|----------|
 | **0** | Lower-middle income nations | Moderate child mortality (22.22) and average life expectancy (72.63). Income (~12,679) and GDP per capita (~6,494) suggest developing economies with room for growth. |
