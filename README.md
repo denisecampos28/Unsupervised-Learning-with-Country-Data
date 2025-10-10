@@ -55,16 +55,20 @@ The global child mortality rate is 37 per 1000 deaths. Some countries are a lot 
 
 Exports show how much of the country’s economy comes from selling goods and services abroad. Low exports means country doesn’t trade much internationally and might rely heavily on local production. High exports means he country is very trade-oriented and often developed. 
 
-**health**
+### **health**
+
 This metric shows how much is invested in keeping people healthy compared to how much they earn. Low health spending: usually happens in developing countries. High health spending usually happens developed countries. 
 
-**imports**
+### **imports**
+
 Imports show how much of the economy comes from bringing in foreign goods/services. Low import means the country may produce most goods locally, or it may be poor and unable to afford imports. High imports means the country is globally connected and buys a lot from other nations. 
 
-**income**
+### **income**
+
 This is the net income per person. Obviously the higher the better. This should be double checked though when a high net income also comes with high inflation. 
 
-**inflation**
+### **inflation**
+
 This metric is the measurement of the annual growth rate of the Total GDP
 How much more expensive life gets each year. Infaltion rates have a sweet spot, given by the table below: 
 
@@ -77,13 +81,16 @@ How much more expensive life gets each year. Infaltion rates have a sweet spot, 
 | **>30%** | Hyperinflation or crisis | Prices spiral out of control. Money is losing value rapidly |
 
 
-**life_expec**
+### **life_expec**
+
 Globally, the average life expentancy is 73 years, with significant regioal differences. The higher the number, the better. 
 
-**total_fer**
+### **total_fer**
+
 The average fertility rate is 2.3 children per woman. Developing countries will have a lot higher ratio. Developed countries will have a lower ratio. 
 
-**gdpp**
+### **gdpp**
+
 This metric is the total market value of all finished goods and services produced within a country. A high GDP signifies a developed nation, but if it increases too fast, that is sign of inflation, which is not good. 
 
 
