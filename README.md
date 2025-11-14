@@ -187,10 +187,10 @@ To do this, we created a **Neediness Index**, which produces one score per count
   - inflation  
   These are variables where **higher values mean worse conditions**, so adding them directly makes sense.
 
-- For variables where **lower values indicate worse conditions**, we flip them using the formula:  
-  \[
-  \frac{1}{\text{value} + 1}
-  \]
+- For variables where **lower values indicate worse conditions**, we flip them using the formula:
+  
+$ \frac{1}{\text{value} + 1} $
+
   This gives:
   - **lower income → higher score**  
   - **lower GDP → higher score**  
