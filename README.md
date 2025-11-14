@@ -152,10 +152,6 @@ The following K diagnostics table is post-log transformation:
 The final K-Means model (K = 3) successfully grouped countries into three distinct clusters based on their socio-economic and health indicators. The table below represents the mean values of each variable within each cluster.
 
 
-<img width="771" height="233" alt="Screenshot 2025-10-10 103618" src="https://github.com/user-attachments/assets/78c6c6f2-7244-4eb4-9ac3-f9a080d5dd41" />
-
-
-
 
 | Cluster | General Profile | Summary |
 |--------|-----------------|---------|
