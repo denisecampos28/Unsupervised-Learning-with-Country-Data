@@ -155,7 +155,7 @@ The final K-Means model (K = 3) successfully grouped countries into three distin
 
 | Cluster | General Profile | Summary |
 |--------|-----------------|---------|
-| **0** | Developing / middle-income nations | Moderate child mortality (~29.7), modest income (~$7,534), and mid-range GDP per capita (~$3,409). Life expectancy (~69.5) and fertility (~2.75) indicate improving but still developing socio-economic conditions. Inflation (~9.89%) is elevated, suggesting economic instability. |
+| **0** | Developing / middle-income nations | Moderate child mortality (/~29.7), modest income (/~$7,534), and mid-range GDP per capita (/~$3,409). Life expectancy (/~69.5) and fertility (/~2.75) indicate improving but still developing socio-economic conditions. Inflation (/~9.89%) is elevated, suggesting economic instability. |
 | **1** | Developed / high-income nations | Low child mortality (~6.75), high income (~$28,707), and strong GDP per capita (~$20,920). High life expectancy (~77.9) and low fertility (~1.77) reflect advanced healthcare and stable living conditions. Inflation (~4.01%) remains within a healthy, stable range. |
 | **2** | Least-developed / high-need nations | Extremely high child mortality (~90.8), very low income (~$1,694), and extremely low GDP per capita (~$722). Life expectancy (~58.6) is significantly below global standards. Very high fertility (~4.95) and high inflation (~10.97%) reflect severe economic hardship and limited access to essential healthcare resources. |
 
