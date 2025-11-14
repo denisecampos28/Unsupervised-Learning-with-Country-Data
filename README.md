@@ -106,8 +106,10 @@ Choosing the right number of clusters is crucial in unsupervised learning, as it
    - The Elbow Method involves plotting the **Within-Cluster Sum of Squares (WCSS)** against different values of *K*.  
    - As *K* increases, WCSS naturally decreases because points are assigned to smaller, tighter clusters.  
    - The "elbow" point of the curve represents a balance between compact clusters and minimal overfitting.  
+
    
   <img width="622" height="461" alt="Screenshot 2025-10-10 102932" src="https://github.com/user-attachments/assets/9dac3483-6c9e-484c-a0f1-830b53fa79aa" />
+
   
 2. **Silhouette Score:**  
    - The Silhouette Score measures how well each data point fits within its cluster compared to other clusters.  
@@ -115,8 +117,10 @@ Choosing the right number of clusters is crucial in unsupervised learning, as it
    - A higher average silhouette score means more distinct and meaningful clusters.  
    - The highest score observed was **0.301 at K = 5**, confirming that five clusters provided the best separation and cohesion among the countries.
 
+
   
 <img width="225" height="100" alt="Screenshot 2025-10-10 102946" src="https://github.com/user-attachments/assets/96c0ab91-f5fc-42a7-9d9c-152704312371" />
+
 
   
 Initially, K = 5 appeared to be the best choice based on the silhouette score. However, when we examined the resulting cluster sizes, we discovered that one cluster contained only a single country. This is a sign of over-segmentation. To address this, we created K diagnostics tables that compared silhouette scores and cluster size distributions across different K values. This allowed us to evaluate both cluster quality and cluster stability before selecting the most appropriate number of clusters.
