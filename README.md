@@ -224,7 +224,7 @@ To do this, we created a **Neediness Index**, which produces one score per count
 
 ## Conclusion
 
-
+This project demonstrates how unsupervised machine learning can be used to uncover meaningful patterns in global development data and support evidence-based decision-making in humanitarian contexts. By applying K-Means clustering to socioeconomic and health indicators from 167 countries, we were able to separate nations into three distinct development groups: developed, developing, and high-need countries. This structure emerged consistently—even after applying a log transformation to reduce skewness—confirming that K = 3 was the most reliable and interpretable number of clusters. To pinpoint one country in deepest need, we created a Neediness Index that integrates key economic and health variables into a single interpretable score. This allowed us to quantify need within the highest-risk cluster and identify Nigeria as the country facing the greatest overall hardship. Overall, this analysis highlights how unsupervised learning can guide global development decisions by revealing which countries face the most severe challenges. While the model offers valuable insights, it also reinforces the need for careful preprocessing, evaluation of clustering stability, and domain-informed interpretation.
 
 
 ## Data Download 
