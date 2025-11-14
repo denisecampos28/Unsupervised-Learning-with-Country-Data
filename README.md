@@ -100,10 +100,6 @@ These preprocessing steps ensured that the dataset was clean, comparable, and re
 
 **Model Used:** K-Means clustering (scikit-learn)
 
-**Intial Model Parameters:** KMeans(n_clusters=5, random_state=42)
-
-Dimensionality Reduction: PCA with 2 components for visual clarity.
-
 Choosing the right number of clusters is crucial in unsupervised learning, as it directly affects how well the model separates similar countries. Two methods were used to determine the optimal value of **K**:
 
 1. **Elbow Method:**  
