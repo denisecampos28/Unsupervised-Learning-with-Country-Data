@@ -2,7 +2,7 @@
 
 ## Overview 
 This project applies unsupervised machine learning, specifically the K-Means Model, to analyze socioeconomic and health indicators of countries around the world.
-The goal is to group countries based on their level of development and identify those most in need of direct humanitarian or economic aid.
+The goal is to group countries based on their level of development and identify the country most in need of direct humanitarian or economic aid.
 The project discovers hidden patterns in global data without predefined labels.
 
 
@@ -100,7 +100,7 @@ These preprocessing steps ensured that the dataset was clean, comparable, and re
 
 **Model Used:** K-Means clustering (scikit-learn)
 
-**Model Parameters:** KMeans(n_clusters=5, random_state=42)
+**Intial Model Parameters:** KMeans(n_clusters=5, random_state=42)
 
 Dimensionality Reduction: PCA with 2 components for visual clarity.
 
@@ -110,11 +110,8 @@ Choosing the right number of clusters is crucial in unsupervised learning, as it
    - The Elbow Method involves plotting the **Within-Cluster Sum of Squares (WCSS)** against different values of *K*.  
    - As *K* increases, WCSS naturally decreases because points are assigned to smaller, tighter clusters.  
    - The "elbow" point of the curve represents a balance between compact clusters and minimal overfitting.  
-   - In this project, the curve began to flatten at **K = 5**, suggesting that adding more clusters provided diminishing returns in reducing WCSS.
-
-     
+   
   <img width="622" height="461" alt="Screenshot 2025-10-10 102932" src="https://github.com/user-attachments/assets/9dac3483-6c9e-484c-a0f1-830b53fa79aa" />
-
   
 2. **Silhouette Score:**  
    - The Silhouette Score measures how well each data point fits within its cluster compared to other clusters.  
@@ -126,7 +123,28 @@ Choosing the right number of clusters is crucial in unsupervised learning, as it
 <img width="225" height="100" alt="Screenshot 2025-10-10 102946" src="https://github.com/user-attachments/assets/96c0ab91-f5fc-42a7-9d9c-152704312371" />
 
   
-Together, these steps ensured that the clustering results were both statistically sound and visually interpretable, revealing meaningful groupings among countries based on their economic and health indicators.
+Initially, K = 5 appeared to be the best choice based on the silhouette score. However, when we examined the resulting cluster sizes, we discovered that one cluster contained only a single country. This is a sign of over-segmentation. To address this, we created K diagnostics tables that compared silhouette scores and cluster size distributions across different K values. This allowed us to evaluate both cluster quality and cluster stability before selecting the most appropriate number of clusters.
+
+
+
+<img width="669" height="325" alt="Screenshot 2025-11-14 014347" src="https://github.com/user-attachments/assets/397d380c-f614-4d07-847a-38365b42d34d" />
+
+
+
+The table makes it clear that once K exceeds 3, the model consistently produces a cluster with only one observation. This confirms that the data is being over-partitioned, which means K = 3 is the only reasonable choice that avoids singleton clusters while still producing a strong silhouette score. However, rather than immediately finalizing K = 3, it is standard practice to test whether transforming the data improves cluster structure. This is especially important because most real world datasets are skewed or unbalanced, and transformations can significantly affect clustering performance.
+
+
+### Log Transformation 
+
+We applied a log transformation to all variables except inflation, since inflation contains negative values and taking the log of a negative number is mathematically undefined, which would have produced NaN values. The log transformation helps by shrinking very large values more than small ones, reducing skewness and improving distance-based calculations in K-Means. After re-evaluating the K diagnostics table with the transformed data, we confirmed that K = 3 remained the optimal choice. The transformation improved the distribution of several variables but did not change the overall clustering structure in a meaningful way.
+
+The following K diagnostics table is post-log transformation: 
+
+
+
+<img width="664" height="332" alt="Screenshot 2025-11-14 014824" src="https://github.com/user-attachments/assets/36a855e7-51d5-4ad5-a8a8-d5f7618ac008" />
+
+
 
 
 ## Model Performance 
@@ -140,54 +158,76 @@ The final K-Means model (K = 5) successfully grouped countries into five distinc
 
 
 | Cluster | General Profile | Summary |
-|----------|-----------------|----------|
-| **0** | Lower-middle income nations | Moderate child mortality (22.22) and average life expectancy (72.63). Income (~12,679) and GDP per capita (~6,494) suggest developing economies with room for growth. |
-| **1** | Developed / high-income nations | Low child mortality (5.18), high income (~44,022), and strong life expectancy (80.08). Stable inflation (2.51) indicates a healthy, developed economy. |
-| **2** | Poorly developed nations | Very high child mortality (94.31), low income (~3,503), and low life expectancy (59.02). Reflects underdeveloped economies with limited access to healthcare and resources. |
-| **3** | Economically unstable nations | Highest child mortality (130.00) and extremely high inflation (104), suggesting crisis-level economic instability. Low GDP and life expectancy (60.50) further highlight struggling conditions. |
-| **4** | Advanced, export-driven economies | Lowest child mortality (4.13) and highest income (~64,033) with strong exports (176.00). Very high GDP (~57,566) and life expectancy (81.43) identify these as highly developed nations. |
-
-- **Clusters 1 and 4** represent **developed nations**, characterized by high income, strong health outcomes, and low inflation.  
-- **Cluster 0** includes **developing nations** with improving but moderate metrics.  
-- **Clusters 2 and 3** represent **underdeveloped or economically unstable countries**, with high child mortality, low income, and weak health infrastructure.
+|--------|-----------------|---------|
+| **0** | Developing / middle-income nations | Moderate child mortality (~29.7), modest income (~$7,534), and mid-range GDP per capita (~$3,409). Life expectancy (~69.5) and fertility (~2.75) indicate improving but still developing socio-economic conditions. Inflation (~9.89%) is elevated, suggesting economic instability. |
+| **1** | Developed / high-income nations | Low child mortality (~6.75), high income (~$28,707), and strong GDP per capita (~$20,920). High life expectancy (~77.9) and low fertility (~1.77) reflect advanced healthcare and stable living conditions. Inflation (~4.01%) remains within a healthy, stable range. |
+| **2** | Least-developed / high-need nations | Extremely high child mortality (~90.8), very low income (~$1,694), and extremely low GDP per capita (~$722). Life expectancy (~58.6) is significantly below global standards. Very high fertility (~4.95) and high inflation (~10.97%) reflect severe economic hardship and limited access to essential healthcare resources. |
 
 
-<img width="894" height="505" alt="Screenshot 2025-10-10 111451" src="https://github.com/user-attachments/assets/2258d7b9-917e-4583-968c-4849e33890d7" />
+
+<img width="989" height="590" alt="download" src="https://github.com/user-attachments/assets/8a5a7587-231b-4de3-835d-aa25091ef360" />
 
 
-The plot above shows the results of **K-Means clustering** visualized using **Principal Component Analysis (PCA)**, which reduces the multidimensional data into two principal components while preserving most of the variance. Each point represents a country, and the colors correspond to the five clusters identified by the model.
 
-- **Least Developed Nations (dark blue):** Countries with high child mortality, low income, and limited healthcare access.  
-- **Developing Nations (blue):** Countries showing progress in income and health but still below global averages.  
-- **Developed Nations (teal):** Economies with strong health outcomes, moderate inflation, and stable growth.  
-- **Ultra-High-Income Nations (light green):** The most advanced economies with high GDP, low fertility, and excellent life expectancy.  
-- **Economically Unstable Nations (green):** Countries experiencing extreme inflation or other severe economic instability (only 1 point, Nigeria).
+- **Cluster 0** includes developing, middle-income countries that show moderate progress but still face notable health and economic challenges.
+- **Cluster 1** represents high-income, developed nations with excellent health, strong GDP, and stable economic conditions.
+- **Cluster 2** represents the least-developed, highest-need nations, characterized by extremely poor health indicators, very low economic output, and high fertility and inflation—making them the group most urgently in need of aid.
 
-The clear separation between clusters indicates that the model successfully distinguished countries based on their economic and social development levels. PCA helps visualize these relationships in two dimensions, making it easier to observe the spread and overlap of different development groups.
+
+
+## Choosing One Country 
+
+Now that we identified which cluster was the most in need, the next step is to determine one single country within that cluster that requires aid the most.
+
+
+To do this, we created a **Neediness Index**, which produces one score per country.  
+**A higher score = worse conditions and greater need.**
+
+
+### How the Neediness Index works:
+- We **add** the values of:
+  - child mortality  
+  - total fertility  
+  - inflation  
+  These are variables where **higher values mean worse conditions**, so adding them directly makes sense.
+
+- For variables where **lower values indicate worse conditions**, we flip them using the formula:  
+  \[
+  \frac{1}{\text{value} + 1}
+  \]
+  This gives:
+  - **lower income → higher score**  
+  - **lower GDP → higher score**  
+  - **lower life expectancy → higher score**
+
+- This formula ensures that **every variable contributes in the correct direction**:  
+  higher need → higher score.
+
+
+### Final Result:
+- After calculating the index for every country in the most vulnerable cluster,  
+  **Nigeria** received the highest neediness score.
+
+
+
+
+<img width="790" height="490" alt="download" src="https://github.com/user-attachments/assets/6c432ef6-926b-4901-ac49-30644fcce565" />
+
+
+
+
+
+  
+<img width="309" height="351" alt="Screenshot 2025-11-14 020657" src="https://github.com/user-attachments/assets/11f0664b-c0c8-411f-bafc-c1d24ca9ee5f" />
+
+
+
 
 
 
 
 ## Conclusion
 
-Although Cluster 2 countries display extremely low GDP and income, further analysis revealed that **Cluster 3** countries are in even more critical condition. They exhibit the highest child mortality rate (130 deaths per 1,000 live births), the highest fertility rate, and hyperinflation exceeding 100%, indicating severe economic instability. These conditions reflect countries facing both economic and humanitarian crises. Therefore, Cluster 3 was identified as the group most urgently in need of direct aid, as their populations are likely experiencing simultaneous health, economic, and structural challenges.
-
-After reviewing which countries belonged to each cluster, I felt further assured in selecting **Cluster 3** as the one most in need of aid. This cluster stood out because it contained **only one country, Nigeria**, while all other clusters included at least three or more countries. This isolation suggests that Nigeria’s socio-economic indicators are uniquely severe compared to others, highlighting its urgent need for focused support and development initiatives.
-
-
-<img width="430" height="411" alt="Screenshot 2025-10-10 112058" src="https://github.com/user-attachments/assets/1d28c52d-a0f8-4dfb-99e0-c73fe66cf506" />
-
-
-<img width="491" height="378" alt="Screenshot 2025-10-10 112116" src="https://github.com/user-attachments/assets/08037a85-818d-486a-9f23-71447e480e55" />
-
-
-<img width="506" height="439" alt="Screenshot 2025-10-10 112126" src="https://github.com/user-attachments/assets/42434568-9c87-492b-908c-a62421ebc73d" />
-
-
-<img width="431" height="103" alt="Screenshot 2025-10-10 112138" src="https://github.com/user-attachments/assets/f7fcc7a0-9a8d-4b57-a71c-e1aafc1ea816" />
-
-
-<img width="457" height="153" alt="Screenshot 2025-10-10 112146" src="https://github.com/user-attachments/assets/9da893db-034d-4ffd-95c9-ea00e32a8710" />
 
 
 
