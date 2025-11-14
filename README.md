@@ -18,7 +18,7 @@ The project discovers hidden patterns in global data without predefined labels.
 
 **Key Variables:**
 
-- country: give the name of the country 
+- country: gives the name of the country 
 - child_mort: Deaths of children under 5 per 1,000 live births
 - exports: Exports as % of GDP per capita
 - health: Health spending as % of GDP per capita
