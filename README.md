@@ -189,7 +189,7 @@ To do this, we created a **Neediness Index**, which produces one score per count
 
 - For variables where **lower values indicate worse conditions**, we flip them using the formula:
   
-$ \frac{1}{\text{value} + 1} $
+1 / (value + 1)
 
   This gives:
   - **lower income → higher score**  
